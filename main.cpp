@@ -22,6 +22,13 @@ std::vector<int> removeValue(std::vector<int> & vec, int value){
     return newVec;
 }
 
+void removeFirst(std::vector<int> & vec){
+    for (int i = 0; i < vec.size() - 1; i++){
+        vec[i] = vec[i+1];
+    }
+    vec.resize(vec.size() - 1);
+}
+
 void task1(){
     /*
      * Задача 1.
@@ -83,11 +90,12 @@ void task3(){
         std::cout << "Enter new element" << std::endl;
         std::cin >> element;
         if(vec.size() > MAX_SIZE){
-            for(int i = 0; i < vec.size() - MAX_SIZE; i++) vec = removeValue(vec, vec.front());
+            for(int i = 0; i < vec.size() - MAX_SIZE; i++) removeFirst(vec);
         }
         vec.push_back(element);
     }
     printVector(vec);
+    std::cout << vec.size();
 }
 
 int main() {
